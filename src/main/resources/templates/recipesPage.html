@@ -5,7 +5,12 @@
     <title>Lista przepisow</title>
 </head>
 <body>
-
+<div th:if="${category ne null}">
+    <img width="400" alt="category logo" th:src="@{|${category.img}|}">
+</div>
+<div th:unless="${category ne null}">
+    <img width="400" alt="category logo" th:src="@{/images/chef.png}">
+</div>
 <ul>
     <li th:each="recipe : ${recipesList}">
         <a th:href="@{|/recipe/${recipe.id}|}" th:text="${recipe.name}"></a>
