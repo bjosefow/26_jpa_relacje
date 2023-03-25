@@ -55,8 +55,13 @@ public class RecipeController {
     }
 
     @GetMapping("/add-new-recipe")
-    public String addForm(Model model){
-        model.addAttribute("newRecipe", new Recipe());
+    public String addForm(Model model, @RequestParam(required = false) Long recipeid){
+        if (recipeid != null) {
+            Optional<Recipe> recipeOpt = recipeRepository.findById(recipeid);
+            recipeOpt.ifPresent(recipe -> model.addAttribute("newRecipe", recipe));
+        } else {
+            model.addAttribute("newRecipe", new Recipe());
+        }
         model.addAttribute("categoriesList", categoryRepository.findAll());
         return "addRecipePage";
     }

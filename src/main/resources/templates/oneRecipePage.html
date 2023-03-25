@@ -12,6 +12,7 @@
 <p th:text="|ilosc polubien uzytkownikow to: ${selectedRecipe.likes}|"></p>
 <a th:href="@{|/add-like/${selectedRecipe.id}|}">Lubie to</a>
 <a th:href="@{|/delete-recipe/${selectedRecipe.id}|}">Usun przepis</a>
+<a th:href="@{|/add-new-recipe?recipeid=${selectedRecipe.id}|}">Edytuj</a>
 
 </body>
 </html>
