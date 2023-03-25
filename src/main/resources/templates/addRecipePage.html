@@ -8,10 +8,17 @@
 <body>
 <img width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
 <form method="post" th:action="@{/addRecipe}" th:object="${newRecipe}">
-    <input type="text" th:field="*{name}">
-    <input type="text" th:field="*{description}">
-    <select th:field="*{category}">
-      <option th:each="categoryItem : ${categoriesList}" th:text="${categoryItem.name}" th:value="${categoryItem.id}"></option>
+    <div class="mb-3">
+        <label for="recipeName" class="form-label">Nazwa przepisu</label>
+        <input type="text" th:field="*{name}" id="recipeName" placeholder="Nazwa przepisu" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="recipeDesc" class="form-label">Tresc przepisu</label>
+        <textarea th:field="*{description}" class="form-control" id="recipeDesc" rows="5" placeholder="Przepis"></textarea>
+    </div>
+    <label for="categorySelect" class="form-label">Kategoria:</label>
+    <select th:field="*{category}" class="form-select" aria-label="Disabled select example" id="categorySelect">
+        <option th:each="categoryItem : ${categoriesList}" th:text="${categoryItem.name}" th:value="${categoryItem.id}"></option>
     </select>
   <button type="submit">Dodaj przepis</button>
 </form>
