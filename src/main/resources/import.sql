@@ -1,0 +1,2 @@
+INSERT INTO category (id, name, description, img) VALUES (1, 'sniadaniowe', 'idealna na poczatek dnia', ''), (2, 'obiadowe', 'opis obiad', ''), (3, 'kolacja', 'lekki posilek na zakonczenie dnia', '');
+INSERT INTO recipe (id, name, description, likes, category_id) VALUES (1, 'nalesniki', 'opis naplesniki', 15, 1), (2, 'parowki', 'opis parowki', 2, 1), (3, 'pierogi ruskie', 'opis perogi', 22, 2), (4, 'mielone', 'opis mielone', 18, 2), (5, 'salatka z kurczakiem', 'opis salatka kurczak', 7, 3), (6, 'salatka warzyna', 'opis salatka wazywna', 5, 3);

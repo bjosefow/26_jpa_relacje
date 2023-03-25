@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Najlepsze przepisy</title>
+</head>
+<body>
+
+<ul>
+  <li th:each="recipe : ${theBestRecipesList}">
+    <a th:href="@{|/recipe/${recipe.id}|}" th:text="|${recipe.name} (${recipe.likes} polubien) |"></a>
+  </li>
+</ul>
+</body>
+</html>

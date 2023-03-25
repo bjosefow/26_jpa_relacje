@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:text="|Przepis na ${selectedRecipe.name}|"></h1>
+<p th:text="${selectedRecipe.description}"></p>
+
+<p th:text="|ilosc polubien uzytkownikow to: ${selectedRecipe.likes}|"></p>
+<a th:href="@{|/add-like/${selectedRecipe.id}|}">Lubie to</a>
+<a th:href="@{|/delete-recipe/${selectedRecipe.id}|}">Usun przepis</a>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ksiazka kucharska. Witamy serdecznie</title>
+</head>
+<body>
+
+<h1>Ksiazka kucharska. Witamy serdecznie</h1>
+
+<a th:href="@{/recipes}">Pokaz przepisy</a> </br>
+<a th:href="@{/add-new-recipe}">Dodaj przepis</a> </br>
+<a th:href="@{/the-best-recipe}">Pokaz liste najlepszych przepisow</a> </br>
+<ul>
+    <li th:each="category : ${categories}">
+        <a th:href="@{|/recipes?categoryName=${category.name}|}" th:text="|Pokaz liste przpisow z kategorii ${category.name}|"></a>
+    </li>
+</ul>
+</body>
+</html>
