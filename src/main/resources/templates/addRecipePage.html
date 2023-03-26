@@ -7,7 +7,7 @@
 </head>
 <body>
 <img width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
-<form method="post" th:action="@{/addRecipe}" th:object="${newRecipe}">
+<form method="post" th:action="@{/add-recipe}" th:object="${newRecipe}">
     <div class="mb-3">
         <label for="recipeName" class="form-label">Nazwa przepisu</label>
         <input type="text" th:field="*{name}" id="recipeName" placeholder="Nazwa przepisu" class="form-control">

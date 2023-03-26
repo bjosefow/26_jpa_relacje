@@ -16,7 +16,7 @@ public class Recipe {
 
     private int likes;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Category category;
 
     public Recipe(String name, String description, Category category) {
