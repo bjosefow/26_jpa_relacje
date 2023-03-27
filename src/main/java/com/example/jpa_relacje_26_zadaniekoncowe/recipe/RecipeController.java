@@ -23,11 +23,11 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes")
-    public String recipes(Model model, @RequestParam(required = false) String categoryName){
+    public String recipes(Model model, @RequestParam(required = false) String categoryName) {
 
         Iterable<Recipe> recipeList;
 
-        if(categoryName != null) {
+        if (categoryName != null) {
             recipeList = recipeRepository.findRecipeByCategoryName(categoryName);
             model.addAttribute("category", categoryRepository.findByName(categoryName));
         } else {
@@ -38,24 +38,24 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/{id}")
-    public String recipe(Model model, @PathVariable Long id){
+    public String recipe(Model model, @PathVariable Long id) {
         Optional<Recipe> recipeOpt = recipeRepository.findById(id);
         if (recipeOpt.isPresent()) {
             model.addAttribute("selectedRecipe", recipeOpt.get());
             return "oneRecipePage";
         } else {
-            return "";
+            return "error";
         }
     }
 
     @GetMapping("/add-like/{id}")
-    public String addLikeToRecipe(@PathVariable Long id){
+    public String addLikeToRecipe(@PathVariable Long id) {
         recipeRepository.addLikeForRecipe(id);
         return "redirect:/recipe/" + id;
     }
 
     @GetMapping("/add-new-recipe")
-    public String addForm(Model model, @RequestParam(required = false) Long recipeid){
+    public String addForm(Model model, @RequestParam(required = false) Long recipeid) {
         if (recipeid != null) {
             Optional<Recipe> recipeOpt = recipeRepository.findById(recipeid);
             recipeOpt.ifPresent(recipe -> model.addAttribute("newRecipe", recipe));
@@ -67,19 +67,22 @@ public class RecipeController {
     }
 
     @PostMapping("/add-recipe")
-    public String addNewRecipe(Recipe recipe){
+    public String addNewRecipe(Recipe recipe, @RequestParam(required = false) Long recipeid) {
+        if (recipeid != 0) {
+            recipe.setId(recipeid);
+        }
         recipeRepository.save(recipe);
         return "redirect:/";
     }
 
     @GetMapping("/delete-recipe/{id}")
-    public String deleteRecipe(@PathVariable Long id){
+    public String deleteRecipe(@PathVariable Long id) {
         recipeRepository.deleteById(id);
         return "redirect:/";
     }
 
     @GetMapping("/the-best-recipe")
-    public String deleteRecipe(Model model){
+    public String deleteRecipe(Model model) {
         model.addAttribute("theBestRecipesList", recipeRepository.getTopRecipes());
         return "theBestRecipesPage";
     }

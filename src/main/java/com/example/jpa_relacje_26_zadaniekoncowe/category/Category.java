@@ -18,7 +18,6 @@ public class Category {
 
     private String img;
 
-
     public Category(String name, String description, String img) {
         this.name = name;
         this.description = description;

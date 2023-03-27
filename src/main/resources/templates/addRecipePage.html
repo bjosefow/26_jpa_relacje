@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Dodaj nowy przepis</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
-<img width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
-<form method="post" th:action="@{/add-recipe}" th:object="${newRecipe}">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<main layout:fragment="content">
+<img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
+<p><strong th:if="${newRecipe.id} ne null" th:text="|Edycja przepisu: ${newRecipe.name}|"></strong></p>
+<form method="post" th:action="@{|/add-recipe?recipeid=${newRecipe.id}|}" th:object="${newRecipe}">
     <div class="mb-3">
         <label for="recipeName" class="form-label">Nazwa przepisu</label>
         <input type="text" th:field="*{name}" id="recipeName" placeholder="Nazwa przepisu" class="form-control">
@@ -20,7 +18,7 @@
     <select th:field="*{category}" class="form-select" aria-label="Disabled select example" id="categorySelect">
         <option th:each="categoryItem : ${categoriesList}" th:text="${categoryItem.name}" th:value="${categoryItem.id}"></option>
     </select>
-  <button type="submit">Dodaj przepis</button>
+  <button type="submit">Zapisz</button>
 </form>
-</body>
+</main>
 </html>

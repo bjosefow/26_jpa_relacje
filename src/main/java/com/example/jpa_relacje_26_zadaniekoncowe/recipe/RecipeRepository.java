@@ -14,7 +14,6 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
     @Query("SELECT r.likes from  Recipe r WHERE r.id = :id")
     int getNumberOfLikesForRecipe(Long id);
 
-
     @Query("SELECT r from Recipe r ORDER BY r.likes DESC LIMIT 3")
     List<Recipe> getTopRecipes();
 

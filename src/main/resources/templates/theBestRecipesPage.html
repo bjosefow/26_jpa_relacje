@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Najlepsze przepisy</title>
-</head>
-<body>
-<img width="400" alt="logo" th:src="@{/images/theBestRecipeLogo.png}"> </br>
-<ul>
-  <li th:each="recipe : ${theBestRecipesList}">
-    <a th:href="@{|/recipe/${recipe.id}|}" th:text="|${recipe.name} (${recipe.likes} polubien) |"></a>
-  </li>
-</ul>
-</body>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<main layout:fragment="content">
+<img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/theBestRecipeLogo.png}"> </br>
+
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <ul class="list-group">
+      <li th:each="recipe : ${theBestRecipesList}" class="list-group-item d-flex justify-content-between align-items-center">
+        <a th:href="@{|/recipe/${recipe.id}|}" th:text="${recipe.name}"></a>
+        <span th:text="|${recipe.likes} likes|" class="badge bg-primary rounded-pill"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+</main>
 </html>

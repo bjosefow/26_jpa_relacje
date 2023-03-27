@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-<h1 th:text="|Przepis na ${selectedRecipe.name}|"></h1>
-<p th:text="${selectedRecipe.description}"></p>
-
-<p th:text="|ilosc polubien uzytkownikow to: ${selectedRecipe.likes}|"></p>
-<a th:href="@{|/add-like/${selectedRecipe.id}|}">Lubie to</a>
-<a th:href="@{|/delete-recipe/${selectedRecipe.id}|}">Usun przepis</a>
-<a th:href="@{|/add-new-recipe?recipeid=${selectedRecipe.id}|}">Edytuj</a>
-
-</body>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<main layout:fragment="content">
+    <img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/oneRecipeLogo.png}"> </br>
+<h2 class="fst-italic text-center" th:text="|Przepis na: ${selectedRecipe.name}|"></h2>
+<div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+        <p><em th:text="${selectedRecipe.description}"></em></p>
+        <p class="text-center" th:text="|ilosc polubien uzytkownikow to: ${selectedRecipe.likes}|"></p>
+        <div class="text-center">
+            <div class="btn-group" role="group">
+                <a th:href="@{|/add-like/${selectedRecipe.id}|}"> <button type="button" class="btn btn-primary">Lubie to</button></a>
+                <a th:href="@{|/delete-recipe/${selectedRecipe.id}|}"><button type="button" class="btn btn-primary">Usun przepis</button></a>
+                <a th:href="@{|/add-new-recipe?recipeid=${selectedRecipe.id}|}"><button type="button" class="btn btn-primary">Edytuj</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm"></div>
+</div>
+</main>
 </html>
