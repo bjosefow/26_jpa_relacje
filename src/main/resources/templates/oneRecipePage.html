@@ -12,9 +12,9 @@
         <p class="text-center" th:text="|ilosc polubien uzytkownikow to: ${selectedRecipe.likes}|"></p>
         <div class="text-center">
             <div class="btn-group" role="group">
-                <a th:href="@{|/add-like/${selectedRecipe.id}|}"> <button type="button" class="btn btn-primary">Lubie to</button></a>
-                <a th:href="@{|/delete-recipe/${selectedRecipe.id}|}"><button type="button" class="btn btn-primary">Usun przepis</button></a>
-                <a th:href="@{|/add-new-recipe?recipeid=${selectedRecipe.id}|}"><button type="button" class="btn btn-primary">Edytuj</button></a>
+                <a th:href="@{|/add-like/${selectedRecipe.id}|}"> <button type="button" class="btn btn-primary mx-1">Lubie to</button></a>
+                <a th:href="@{|/delete-recipe/${selectedRecipe.id}|}"><button type="button" class="btn btn-primary mx-1">Usun przepis</button></a>
+                <a th:href="@{|/update-recipe/${selectedRecipe.id}|}"><button type="button" class="btn btn-primary mx-1">Edytuj</button></a>
             </div>
         </div>
     </div>

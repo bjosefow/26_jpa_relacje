@@ -5,7 +5,8 @@
 <main layout:fragment="content">
 <img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
 <p><strong th:if="${newRecipe.id} ne null" th:text="|Edycja przepisu: ${newRecipe.name}|"></strong></p>
-<form method="post" th:action="@{|/add-recipe?recipeid=${newRecipe.id}|}" th:object="${newRecipe}">
+<form method="post" th:action="@{/add-recipe}" th:object="${newRecipe}">
+    <input type="hidden" th:field="*{id}">
     <div class="mb-3">
         <label for="recipeName" class="form-label">Nazwa przepisu</label>
         <input type="text" th:field="*{name}" id="recipeName" placeholder="Nazwa przepisu" class="form-control">
@@ -18,7 +19,7 @@
     <select th:field="*{category}" class="form-select" aria-label="Disabled select example" id="categorySelect">
         <option th:each="categoryItem : ${categoriesList}" th:text="${categoryItem.name}" th:value="${categoryItem.id}"></option>
     </select>
-  <button type="submit">Zapisz</button>
+  <button type="submit" class="btn btn-primary my-3">Zapisz</button>
 </form>
 </main>
 </html>

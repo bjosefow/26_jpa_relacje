@@ -56,21 +56,21 @@ public class RecipeController {
 
     @GetMapping("/add-new-recipe")
     public String addForm(Model model, @RequestParam(required = false) Long recipeid) {
-        if (recipeid != null) {
-            Optional<Recipe> recipeOpt = recipeRepository.findById(recipeid);
-            recipeOpt.ifPresent(recipe -> model.addAttribute("newRecipe", recipe));
-        } else {
-            model.addAttribute("newRecipe", new Recipe());
-        }
+        model.addAttribute("newRecipe", new Recipe());
+        model.addAttribute("categoriesList", categoryRepository.findAll());
+        return "addRecipePage";
+    }
+
+    @GetMapping("/update-recipe/{id}")
+    public String updateForm(Model model, @PathVariable Long id) {
+        Optional<Recipe> recipeOpt = recipeRepository.findById(id);
+        recipeOpt.ifPresent(recipe -> model.addAttribute("newRecipe", recipe));
         model.addAttribute("categoriesList", categoryRepository.findAll());
         return "addRecipePage";
     }
 
     @PostMapping("/add-recipe")
-    public String addNewRecipe(Recipe recipe, @RequestParam(required = false) Long recipeid) {
-        if (recipeid != 0) {
-            recipe.setId(recipeid);
-        }
+    public String addRecipe(Recipe recipe) {
         recipeRepository.save(recipe);
         return "redirect:/";
     }
