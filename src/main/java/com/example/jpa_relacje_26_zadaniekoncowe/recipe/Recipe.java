@@ -2,6 +2,7 @@ package com.example.jpa_relacje_26_zadaniekoncowe.recipe;
 
 import com.example.jpa_relacje_26_zadaniekoncowe.category.Category;
 import jakarta.persistence.*;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 @Entity
 public class Recipe {
@@ -12,6 +13,7 @@ public class Recipe {
 
     private String name;
 
+    @Column(length = 1000)
     private String description;
 
     private int likes;
