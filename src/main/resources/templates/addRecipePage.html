@@ -7,6 +7,7 @@
 <p><strong th:if="${newRecipe.id} ne null" th:text="|Edycja przepisu: ${newRecipe.name}|"></strong></p>
 <form method="post" th:action="@{/add-recipe}" th:object="${newRecipe}">
     <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{likes}">
     <div class="mb-3">
         <label for="recipeName" class="form-label">Nazwa przepisu</label>
         <input type="text" th:field="*{name}" id="recipeName" placeholder="Nazwa przepisu" class="form-control">
