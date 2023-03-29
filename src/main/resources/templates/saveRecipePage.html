@@ -2,10 +2,13 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+<head>
+    <title>Zapis przepisu</title>
+</head>
 <main layout:fragment="content">
 <img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/addRecipe.png}"> </br>
-<p><strong th:if="${newRecipe.id} ne null" th:text="|Edycja przepisu: ${newRecipe.name}|"></strong></p>
-<form method="post" th:action="@{/add-recipe}" th:object="${newRecipe}">
+<p><strong th:if="${recipeToSave.id} ne null" th:text="|Edycja przepisu: ${recipeToSave.name}|"></strong></p>
+<form method="post" th:action="@{/save-recipe}" th:object="${recipeToSave}">
     <input type="hidden" th:field="*{id}">
     <input type="hidden" th:field="*{likes}">
     <div class="mb-3">

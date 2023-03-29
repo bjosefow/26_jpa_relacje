@@ -2,6 +2,9 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+<head>
+    <title>Strona z przepisem</title>
+</head>
 <main layout:fragment="content">
     <img class="rounded mx-auto d-block" width="400" alt="logo" th:src="@{/images/oneRecipeLogo.png}"> </br>
 <h2 class="fst-italic text-center" th:text="|Przepis na: ${selectedRecipe.name}|"></h2>

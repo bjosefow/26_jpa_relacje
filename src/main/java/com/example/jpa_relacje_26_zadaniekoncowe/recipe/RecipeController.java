@@ -1,6 +1,5 @@
 package com.example.jpa_relacje_26_zadaniekoncowe.recipe;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.category.Category;
 import com.example.jpa_relacje_26_zadaniekoncowe.category.CategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,22 +54,22 @@ public class RecipeController {
     }
 
     @GetMapping("/add-new-recipe")
-    public String addForm(Model model, @RequestParam(required = false) Long recipeid) {
-        model.addAttribute("newRecipe", new Recipe());
+    public String addForm(Model model) {
+        model.addAttribute("recipeToSave", new Recipe());
         model.addAttribute("categoriesList", categoryRepository.findAll());
-        return "addRecipePage";
+        return "saveRecipePage";
     }
 
     @GetMapping("/update-recipe/{id}")
     public String updateForm(Model model, @PathVariable Long id) {
         Optional<Recipe> recipeOpt = recipeRepository.findById(id);
-        recipeOpt.ifPresent(recipe -> model.addAttribute("newRecipe", recipe));
+        recipeOpt.ifPresent(recipe -> model.addAttribute("recipeToSave", recipe));
         model.addAttribute("categoriesList", categoryRepository.findAll());
-        return "addRecipePage";
+        return "saveRecipePage";
     }
 
-    @PostMapping("/add-recipe")
-    public String addRecipe(Recipe recipe) {
+    @PostMapping("/save-recipe")
+    public String saveRecipe(Recipe recipe) {
         recipeRepository.save(recipe);
         return "redirect:/";
     }
