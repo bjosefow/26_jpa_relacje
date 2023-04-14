@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Strona glowna</title>
+</head>
+<body>
+<h1>Panel uzytkownika</h1>
+<p> Twoje dane </p>
+<p th:text="|${currentUser.firstName} ${currentUser.lastName} ${currentUser.password}|"></p>
+<a th:href="@{/updateUser}">Aktualizacja danych</a>
+</body>
+</html>

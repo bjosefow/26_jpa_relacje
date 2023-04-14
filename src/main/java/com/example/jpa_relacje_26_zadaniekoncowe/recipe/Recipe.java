@@ -13,7 +13,6 @@ public class Recipe {
 
     private String name;
 
-    @Column(length = 1000)
     private String description;
 
     private int likes;
