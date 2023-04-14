@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private static final String USER_ROLE = "USER";
+    private static final String ADMIN_ROLE = "ADMIN";
     private static final String ADMIN_AUTHORITY = "ROLE_ADMIN";
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
@@ -38,21 +39,8 @@ public class UserService {
                 .map(this::mapToUserDto);
     }
 
-    //chcemy liste osob, same adresy email
-    public List<String> findAllUserEmails(){
-        return userRepository.findAll().stream().map(User::getEmail).filter(email -> !email.equals(getCurrentUserName())).toList();
-    }
-
-    public List<UserDto> findAllUserExcludeCurrentUser(){
+    public List<UserDto> findAllUserExcludeCurrentUser() {
         return userRepository.findAll().stream().map(this::mapToUserDto).filter(u -> u.getEmail() != getCurrentUserName()).toList();
-    }
-
-    @Transactional
-    //najlepiej jest dodawac te adnotacje wlasnie w warstiwe uslug a nie w repositorium
-    public void deleteByEMail(String email){
-        if (isCurrentUserAdmin()) {
-            userRepository.deleteByEmail(email);
-        }
     }
 
     @Transactional
@@ -90,26 +78,29 @@ public class UserService {
         return new UserCredentialsDto(email, password, roles);
     }
 
-    public UserDto mapToUserDto(User user){
-        String firstname = user.getFirstName();
-        String lastname = user.getLastName();
-        String email = user.getEmail();
-        String pass = user.getPassword();
-        return new UserDto(firstname, lastname, email, pass);
+    public UserDto mapToUserDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        if (user.getRoles().contains(userRole(ADMIN_ROLE))) {
+            userDto.setAdmin(true);
+        }
+        return userDto;
     }
 
-    static String getCurrentUserName(){
+    static String getCurrentUserName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
-    Optional<User> getCurrentUser(){
+    Optional<User> getCurrentUser() {
         return userRepository.findByEmail(getCurrentUserName());
     }
 
-    public Optional<UserDto> getCurrentUserDto(){
+    public Optional<UserDto> getCurrentUserDto() {
         return getCurrentUser().map(this::mapToUserDto);
     }
-
 
     @Transactional
     public void updateUser(UserDto userDto) {
@@ -125,17 +116,13 @@ public class UserService {
         }
     }
 
-    public boolean isUserAdmin(String email) {
-        return userRepository.findByEmail(email).get().getRoles().contains(userRoleRepository.findByName("ADMIN").get());
-    }
-
     @Transactional
     public void addAdminRole(String userEmail) {
         if (isCurrentUserAdmin()) {
             Optional<User> userOptional = userRepository.findByEmail(userEmail);
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
-                user.addRole(userRoleRepository.findByName("ADMIN").get());
+                user.addRole(userRole(ADMIN_ROLE));
                 userRepository.save(user);
             }
         }
@@ -147,9 +134,17 @@ public class UserService {
             Optional<User> userOptional = userRepository.findByEmail(userEmail);
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
-                user.deleteRole(userRoleRepository.findByName("ADMIN").get());
+                user.deleteRole(userRole(ADMIN_ROLE));
+                if (!user.getRoles().contains(userRole(USER_ROLE))) {
+                    user.addRole(userRole(USER_ROLE));
+                }
                 userRepository.save(user);
             }
         }
+    }
+
+    public UserRole userRole(String roleName) {
+        Optional<UserRole> optionalUserRole = userRoleRepository.findByName(roleName);
+        return optionalUserRole.orElse(null);
     }
 }

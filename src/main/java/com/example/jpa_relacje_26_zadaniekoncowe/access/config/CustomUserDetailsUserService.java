@@ -19,7 +19,8 @@ public class CustomUserDetailsUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userService.findCredentialsByEmail(username).map(this::createUserDetails).orElseThrow(()-> new UsernameNotFoundException("User with email %s not found".formatted(username)));
+        return userService.findCredentialsByEmail(username).map(this::createUserDetails)
+                .orElseThrow(() -> new UsernameNotFoundException("User with email %s not found".formatted(username)));
     }
 
     private UserDetails createUserDetails(UserCredentialsDto credentials) {

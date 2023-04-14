@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Zarejestruj sie</title>
-    <link rel="stylesheet" th:href="@{/styles/main.css}" href="../static/styles/main.css">
+    <title>Rejestracja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<div class="container">
-    <h1 class="login-header">Zarejestruj sie</h1>
-    <i class="fa-solid fa-lock fa-10x lock-icon"></i>
-    <form class="login-form" action="/register" method="post" th:object="${userToRegister}">
-        <input name="firstname" placeholder="imie" class="form-item" th:field="*{firstName}">
-        <input name="lastname" placeholder="nazwisko" class="form-item" th:field="*{lastName}">
-        <input type="email" name="email" placeholder="email\nazwa uzytkownika" class="form-item" th:field="*{email}">
-        <input type="password" name="pass" placeholder="haslo" class="form-item" th:field="*{password}">
-        <button type="submit" class="form-item">Zarejestruj sie</button>
-    </form>
+<div class="container text-center">
+    <i class="fa-solid fa-user fa-10x"></i>
+    <h2>Rejestracja nowego uzytkownika</h2>
+    <div class="row">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form class="login-form center" th:action="@{/register}" method="post" th:object="${userToRegister}">
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">Imie: </label>
+                        <input id="firstname" name="firstname" placeholder="Wpisz imie" class="form-control" th:field="*{firstName}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Nazwisko: </label>
+                        <input id="lastname" name="lastname" placeholder="Wpisz nazwisko" class="form-control" th:field="*{lastName}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-Mail: </label>
+                        <input id="email" type="email" name="email" placeholder="Wpisz email\nazwe uzytkownika" class="form-control" th:field="*{email}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Haslo: </label>
+                        <input id="password" type="password" name="pass" placeholder="Wpisz haslo:" class="form-control" th:field="*{password}">
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Zarejestruj sie</button>
+                </form>
+            </div>
+        <div class="col-sm-3"></div>
+    </div>
 </div>
 </body>
 </html>

@@ -5,8 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="application_user")
-public
+@Table(name = "application_user")
 class User {
 
     @Id
@@ -65,11 +64,11 @@ class User {
         this.password = password;
     }
 
-    public void addRole(UserRole role){
+    public void addRole(UserRole role) {
         roles.add(role);
     }
 
-    public void deleteRole(UserRole role){
+    public void deleteRole(UserRole role) {
         roles.remove(role);
     }
 

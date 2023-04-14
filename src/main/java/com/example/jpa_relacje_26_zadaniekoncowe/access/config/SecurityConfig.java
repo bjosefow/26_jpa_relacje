@@ -17,11 +17,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request -> request
-                .requestMatchers("/images/**", "/styles/**").permitAll()
                 .requestMatchers("/register/**", "/registration-success").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-//                .requestMatchers("/").hasAnyRole("USER", "ADMIN")
-//                .requestMatchers("/updateUser/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
         );
         http.formLogin(form -> form.loginPage("/login").permitAll());
@@ -35,7 +33,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }

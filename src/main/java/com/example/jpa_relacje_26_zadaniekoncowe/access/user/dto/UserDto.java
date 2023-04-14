@@ -8,11 +8,14 @@ public class UserDto {
     private String email;
     private String password;
 
+    public boolean isAdmin;
+
     public UserDto(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.isAdmin = false;
     }
 
     public UserDto() {
@@ -48,5 +51,13 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

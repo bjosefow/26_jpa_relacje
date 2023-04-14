@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-  <meta charset="UTF-8">
-  <title>Strona glowna</title>
+  <title>Aktualizacja danych</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-<h1>Panel uzytkownika</h1>
-<p> Twoje dane </p>
-<p th:text="|${currentUser.firstName} ${currentUser.lastName} ${currentUser.password}|"></p>
-<a th:href="@{/updateUser}">Aktualizacja danych</a>
-</body>
+<main layout:fragment="content">
+  <div>
+    <i class="fa-solid fa-user-chef fa-10x"></i>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <h1 class="text-center fst-italic">Panel uzytkownika</h1>
+        <h2 class="fst-italic"> Twoje dane: </h2>
+        <ul class="list-group">
+          <li th:text="|Imie: ${currentUser.firstName}|" class="list-group-item">An item</li>
+          <li th:text="|Nazwisko: ${currentUser.lastName}|" class="list-group-item">A second item</li>
+          <li th:text="|E-Mail/Nazwa uzytkownika: ${currentUser.email}|" class="list-group-item">A third item</li>
+          <li class="list-group-item">
+            <a th:href="@{/update-user}" class="text-center">Aktualizacja danych</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+</main>
 </html>

@@ -23,15 +23,13 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(UserDto userDto){
+    public String register(UserDto userDto) {
         userService.register(userDto);
         return "redirect:/registration-success";
     }
 
     @GetMapping("/registration-success")
-    public String registerSuccess(){
+    public String registerSuccess() {
         return "registrationSuccessPage";
     }
-
-
 }

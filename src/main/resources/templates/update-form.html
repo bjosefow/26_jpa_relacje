@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-  <meta charset="UTF-8">
-  <title>Aktualizacja danych uzytkownika</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Aktualizacja danych</title>
 </head>
-<body>
-<div class="container">
-  <h1 class="login-header">Aktualizacja danych</h1>
+<main layout:fragment="content">
+<div class="text-center">
+  <i class="fa-solid fa-pen fa-10x"></i>
+  <h1 class="fst-italic">Aktualizacja danych</h1>
   <i class="fa-solid fa-lock fa-10x lock-icon"></i>
-  <p th:text="|Update danych dla uzytkownika: ${userToInsert}|"></p>
-  <form class="login-form" action="/update" method="post" th:object="${userToInsert}">
-    <input name="firstname" placeholder="imie" class="form-item" th:field="*{firstName}">
-    <input name="lastname" placeholder="nazwisko" class="form-item" th:field="*{lastName}">
-    <input type="password" name="pass" placeholder="haslo" class="form-item" th:field="*{password}">
-    <input type="hidden" th:field="*{email}">
-    <button type="submit" class="form-item">Aktualizuj dane</button>
-  </form>
+  <p class="fst-italic" th:text="|Update danych dla uzytkownika: ${userToInsert.email}|"></p>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <form class="login-form" th:action="@{/update}" method="post" th:object="${userToInsert}">
+        <div class="mb-3">
+          <label for="firstname" class="form-label">Imie: </label>
+          <input id="firstname" placeholder="imie" class="form-control" th:field="*{firstName}">
+        </div>
+        <div class="mb-3">
+          <label for="lastname" class="form-label">Nazwisko: </label>
+          <input id="lastname" placeholder="nazwisko" class="form-control" th:field="*{lastName}">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Haslo: </label>
+          <input id="password" type="password" placeholder="haslo" class="form-control" th:field="*{password}">
+        </div>
+        <div class="mb-3">
+          <input type="hidden" th:field="*{email}">
+        </div>
+          <button type="submit" class="btn btn-outline-success">Aktualizuj dane</button>
+      </form>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
 </div>
-</body>
+</main>
 </html>

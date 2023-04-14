@@ -20,14 +20,14 @@ public class UserPanelController {
     }
 
     @GetMapping("/userData")
-    public String userPage(Model model){
+    public String userPage(Model model) {
         Optional<UserDto> currentUserOpt = userService.getCurrentUserDto();
         currentUserOpt.ifPresent(user -> model.addAttribute("currentUser", user));
         return "userDataPage";
     }
 
-    @GetMapping("/updateUser")
-    public String updateUser(Model model){
+    @GetMapping("/update-user")
+    public String updateUser(Model model) {
         Optional<UserDto> currentUserOpt = userService.getCurrentUserDto();
         if (currentUserOpt.isPresent()) {
             model.addAttribute("userToInsert", currentUserOpt.get());
@@ -38,7 +38,7 @@ public class UserPanelController {
     }
 
     @PostMapping("/update")
-    public String updateUser(UserDto userDto){
+    public String updateUser(UserDto userDto) {
         userService.updateUser(userDto);
         return "redirect:/userData";
     }

@@ -1,9 +1,7 @@
 package com.example.jpa_relacje_26_zadaniekoncowe;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.User;
 import com.example.jpa_relacje_26_zadaniekoncowe.access.user.UserService;
 import com.example.jpa_relacje_26_zadaniekoncowe.category.CategoryRepository;
-import com.example.jpa_relacje_26_zadaniekoncowe.recipe.RecipeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
