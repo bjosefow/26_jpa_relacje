@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<main layout:fragment="content">
+    <head>
+        <title>Lista przepisow</title>
+    </head>
+<div class="text-center" th:if="${category ne null}">
+    <h2 class="fst-italic" th:text="|Przepisy kategorii: ${category.name}|"></h2>
+    <img width="400" class="rounded mx-auto d-block" alt="category logo" th:src="@{|${category.img}|}">
+    <p th:text="${category.description}"></p>
+</div>
+<div class="text-center" th:unless="${category ne null}">
+    <img class="rounded mx-auto d-block" width="400" alt="category logo" th:src="@{/images/chef.png}">
+</div>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item" th:each="recipe : ${recipesList}">
+                <a th:href="@{|/recipe/${recipe.id}|}" th:text="${recipe.name}"></a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+</main>
+</html>

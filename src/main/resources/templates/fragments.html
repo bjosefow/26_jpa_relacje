@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Fragments</title>
+</head>
+<body>
+<header th:fragment="common-header">
+  <h1 class="fst-italic">Ksiazka kucharska</h1>
+  <img src="../static/images/logo.png" class="rounded mx-auto d-block" width="400" alt="company logo" th:src="@{/images/logo.png}">
+</header>
+<footer class="text-center" th:fragment="common-footer">
+  <img src="../static/images/footerLogo.png" class="rounded mx-auto d-block" width="800" height="150" alt="footer logo" th:src="@{/images/footerLogo.png}">
+  <div class="d-grid gap-2 col-6 mx-auto center">
+    <a th:href="@{/}"><button type="button" class="btn btn-outline-success">Strona glowna</button></a>
+  </div>
+</footer>
+</body>
+</html>

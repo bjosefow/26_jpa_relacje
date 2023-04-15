@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Strona główna</title>
+</head>
+<main class="text-center" layout:fragment="content">
+    <img width="300" alt="logo" class="rounded mx-auto d-block" th:src="@{/images/logo.png}"> </br>
+    <h1 class="fst-italic">Ksiazka kucharska</h1>
+    <div class="list-group">
+        <p><strong><a class="fst-italic" th:href="@{/recipes}">Pokaz przepisy</a></strong></p>
+        <p><strong><a class="fst-italic" th:href="@{/add-new-recipe}">Dodaj przepis</a></strong></p>
+        <p><strong><a class="fst-italic" th:href="@{/the-best-recipe}">Pokaz liste najlepszych przepisow</a></strong></p>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div th:each="category : ${categories}" class="col">
+                <div class="card">
+                    <a th:href="@{|/recipes?categoryName=${category.name}|}">
+                        <img th:src="@{|${category.img}|}" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${category.name}"></h5>
+                        <p class="card-text" th:text="${category.description}"></p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</main>
+</html>
