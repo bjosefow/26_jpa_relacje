@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Logowanie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container text-center">
+    <i class="fa-solid fa-house fa-10x"></i>
+    <h2 class="login-header">Zaloguj sie</h2>
+    <div class="row">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form class="login-form center" th:action="@{/login}" method="post">
+                    <div class="mb-3">
+                        <input name="username" placeholder="nazwa uzytkownika" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <input name="password" placeholder="haslo" type="password" class="form-control">
+                    </div>
+                    <div th:if="${error}" class="alert alert-warning">Blad logowania</div>
+                        <button type="submit" class="btn btn-outline-success my-3">Zaloguj sie</button>
+                </form>
+                <p>
+                    Nie masz jeszcze konta? <a href="#" th:href="@{/register}"> Zarejestruj sie </a>
+                </p>
+                </form>
+            </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+</body>
+</html>

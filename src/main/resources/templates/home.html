@@ -8,6 +8,9 @@
 <main class="text-center" layout:fragment="content">
     <img width="300" alt="logo" class="rounded mx-auto d-block" th:src="@{/images/logo.png}"> </br>
     <h1 class="fst-italic">Ksiazka kucharska</h1>
+    <a th:href="@{/logout}"><button type="button" class="btn btn-outline-success">Wyloguj sie</button></a>
+    <a th:if="${isCurrentUserAdmin}" th:href="@{/admin}"><button type="button" class="btn btn-outline-success">Panel admina</button></a>
+    <a th:href="@{/userData}"><button type="button" class="btn btn-outline-success">Moje dane</button></a>
     <div class="list-group">
         <p><strong><a class="fst-italic" th:href="@{/recipes}">Pokaz przepisy</a></strong></p>
         <p><strong><a class="fst-italic" th:href="@{/add-new-recipe}">Dodaj przepis</a></strong></p>
