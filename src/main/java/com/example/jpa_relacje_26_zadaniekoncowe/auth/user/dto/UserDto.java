@@ -1,9 +1,19 @@
 package com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto;
 
+import jakarta.validation.constraints.*;
+
 public class UserDto {
+    @NotBlank
+    @Size(min = 3)
     private String firstName;
+    @NotBlank
+    @Size(min = 3)
     private String lastName;
+    @NotBlank
+    @Email
     private String email;
+    @NotBlank
+    @Size(min = 8)
     private String password;
 
     public boolean isAdmin;

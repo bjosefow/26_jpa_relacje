@@ -2,6 +2,9 @@ package com.example.jpa_relacje_26_zadaniekoncowe.recipe;
 
 import com.example.jpa_relacje_26_zadaniekoncowe.category.Category;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 @Entity
@@ -11,12 +14,16 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @RecipeName(minNameLength = 5)
     private String name;
 
+    @NotBlank
     private String description;
 
     private int likes;
 
+    @NotNull
     @ManyToOne
     private Category category;
 

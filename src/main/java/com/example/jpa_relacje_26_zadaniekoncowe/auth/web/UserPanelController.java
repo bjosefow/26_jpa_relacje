@@ -2,9 +2,12 @@ package com.example.jpa_relacje_26_zadaniekoncowe.auth.web;
 
 import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.UserService;
 import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto.UserDto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
@@ -37,7 +40,10 @@ public class UserPanelController {
     }
 
     @PostMapping("/update")
-    public String updateUser(UserDto userDto) {
+    public String updateUser(@Valid @ModelAttribute("userToInsert") UserDto userDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "update-form";
+        }
         userService.updateUser(userDto);
         return "redirect:/userData";
     }

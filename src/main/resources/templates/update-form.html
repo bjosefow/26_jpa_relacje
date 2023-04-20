@@ -14,18 +14,21 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-      <form class="login-form" th:action="@{/update}" method="post" th:object="${userToInsert}">
+      <form class="login-form" th:action="@{/update}" method="post" th:object="${userToInsert}" novalidate>
         <div class="mb-3">
           <label for="firstname" class="form-label">Imie: </label>
-          <input id="firstname" placeholder="imie" class="form-control" th:field="*{firstName}">
+          <input id="firstname" placeholder="imie" class="form-control" th:field="*{firstName}" required>
+          <p th:errors="*{firstName}" class="alert alert-warning"></p>
         </div>
         <div class="mb-3">
           <label for="lastname" class="form-label">Nazwisko: </label>
-          <input id="lastname" placeholder="nazwisko" class="form-control" th:field="*{lastName}">
+          <input id="lastname" placeholder="nazwisko" class="form-control" th:field="*{lastName}" required>
+          <p th:errors="*{lastName}" class="alert alert-warning"></p>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Haslo: </label>
           <input id="password" type="password" placeholder="haslo" class="form-control" th:field="*{password}">
+          <p th:errors="*{password}" class="alert alert-warning"></p>
         </div>
         <div class="mb-3">
           <input type="hidden" th:field="*{email}">
