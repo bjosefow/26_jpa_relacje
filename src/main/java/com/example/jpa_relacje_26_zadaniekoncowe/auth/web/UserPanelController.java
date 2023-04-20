@@ -1,11 +1,10 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.web;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.web;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.UserService;
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto.UserDto;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.UserService;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;

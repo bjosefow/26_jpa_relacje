@@ -1,6 +1,6 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.web;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.web;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.UserService;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

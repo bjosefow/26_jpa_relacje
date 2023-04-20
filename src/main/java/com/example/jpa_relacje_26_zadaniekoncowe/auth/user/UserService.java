@@ -1,7 +1,7 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.user;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.user;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto.UserCredentialsDto;
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto.UserDto;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto.UserCredentialsDto;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto.UserDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

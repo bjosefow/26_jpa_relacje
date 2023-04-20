@@ -1,4 +1,4 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.user;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.user;
 
 import jakarta.persistence.*;
 

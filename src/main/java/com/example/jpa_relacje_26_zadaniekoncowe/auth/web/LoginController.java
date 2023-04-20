@@ -1,4 +1,4 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.web;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

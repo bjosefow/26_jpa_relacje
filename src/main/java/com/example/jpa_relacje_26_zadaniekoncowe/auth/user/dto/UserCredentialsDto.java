@@ -1,4 +1,4 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto;
 
 import java.util.Set;
 

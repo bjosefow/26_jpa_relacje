@@ -1,6 +1,4 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto;
-
-import java.util.Set;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto;
 
 public class UserDto {
     private String firstName;

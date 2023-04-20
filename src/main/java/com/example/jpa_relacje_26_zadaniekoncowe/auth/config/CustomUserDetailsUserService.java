@@ -1,7 +1,7 @@
-package com.example.jpa_relacje_26_zadaniekoncowe.access.config;
+package com.example.jpa_relacje_26_zadaniekoncowe.auth.config;
 
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.UserService;
-import com.example.jpa_relacje_26_zadaniekoncowe.access.user.dto.UserCredentialsDto;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.UserService;
+import com.example.jpa_relacje_26_zadaniekoncowe.auth.user.dto.UserCredentialsDto;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
