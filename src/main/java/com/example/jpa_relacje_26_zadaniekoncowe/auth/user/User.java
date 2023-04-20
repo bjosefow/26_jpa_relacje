@@ -1,6 +1,8 @@
 package com.example.jpa_relacje_26_zadaniekoncowe.auth.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +13,17 @@ class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Size(min = 3)
     private String firstName;
+    @NotBlank
+    @Size(min = 3)
     private String lastName;
+    @NotBlank
+    @Email
     private String email;
+    @NotBlank
+    @Size(min = 8)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
