@@ -19,6 +19,7 @@
                     <div class="mb-3">
                         <input name="password" placeholder="haslo" type="password" class="form-control">
                     </div>
+                    <div th:if="${error}" class="alert alert-warning">Blad logowania</div>
                         <button type="submit" class="btn btn-outline-success my-3">Zaloguj sie</button>
                 </form>
                 <p>

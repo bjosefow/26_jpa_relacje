@@ -40,7 +40,7 @@ public class UserService {
     }
 
     public List<UserDto> findAllUserExcludeCurrentUser() {
-        return userRepository.findAll().stream().map(this::mapToUserDto).filter(u -> u.getEmail() != getCurrentUserName()).toList();
+        return userRepository.findAll().stream().map(this::mapToUserDto).filter(u -> !u.getEmail().equals(getCurrentUserName())).toList();
     }
 
     @Transactional

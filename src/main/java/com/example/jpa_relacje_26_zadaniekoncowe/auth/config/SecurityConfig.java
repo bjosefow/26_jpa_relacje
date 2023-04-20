@@ -1,5 +1,6 @@
 package com.example.jpa_relacje_26_zadaniekoncowe.auth.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,11 +14,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request -> request
+                .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .requestMatchers("/register/**", "/registration-success").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
         );
+        http.headers().frameOptions().sameOrigin();
         http.formLogin(form -> form.loginPage("/login").permitAll());
         http.csrf().disable();
         return http.build();
